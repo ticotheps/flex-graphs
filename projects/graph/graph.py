@@ -22,7 +22,7 @@ class Graph:
         q.enqueue(starting_vertex_id)
         # Step 2: Create a Set() to store visited vertices
         #         NOTE: Sets are a good data structure b/c: they're 
-        #               unordered and no duplicated items
+        #               unordered and don't have duplicated items
         visited = set()
         # Step 3: Use a WHILE loop that continues while queue is NOT empty
         while q.size() > 0:
@@ -40,11 +40,27 @@ class Graph:
                     q.enqueue(next_vert)
         
     def dft(self, starting_vertex_id):
-        """
-        Print each vertex_id in depth-first order
-        beginning from starting_vertex_id.
-        """
-        pass  # TODO
+        # Step 1: Create an empty STACK and push the starting_vertex_id
+        s = Stack()
+        s.push(starting_vertex_id)
+        # Step 2: Create a Set() to store visited vertices
+        #         NOTE: Sets are a good data structure b/c: they're 
+        #               unordered and don't have duplicated items
+        visited = set()
+        # Step 3: Use a WHILE loop that continues while stack is NOT empty
+        while s.size() > 0:
+            # Step 4: Pop the FIRST vertex [to evaluate] and set equal
+            #         to a variable
+            current_vert = s.pop()
+            if current_vert not in visited:
+                # Step 5: If it has NOT been visited, add it into the set 
+                #         as an item
+                print()
+                visited.add(current_vert)
+                # Step 6: Use a FOR loop that iterates over each of current_vert's
+                #         neighbors, adding each one to end of the queue
+                for next_vert in self.vertices[current_vert]:
+                    s.push(next_vert)
     def dft_recursive(self, starting_vertex_id):
         """
         Print each vertex_id in depth-first order
