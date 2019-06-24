@@ -27,7 +27,7 @@ class Graph:
         visited = set()
         # Step 3: Use a WHILE loop that continues while queue is NOT empty
         while q.size() > 0:
-            # Step 4: Dequeue the FIRST vertex [to evaluate] and set equal
+            # Step 4: Dequeue the FIRST vertex [to evaluate] and set it equal
             #         to a variable
             current_vert = q.dequeue()
             if current_vert not in visited:
@@ -50,7 +50,7 @@ class Graph:
         visited = set()
         # Step 3: Use a WHILE loop that continues while stack is NOT empty
         while s.size() > 0:
-            # Step 4: Pop the FIRST vertex [to evaluate] and set equal
+            # Step 4: Pop the FIRST vertex [to evaluate] and set it equal
             #         to a variable
             current_vert = s.pop()
             if current_vert not in visited:
@@ -64,7 +64,7 @@ class Graph:
                     s.push(next_vert)
                     
     def dft_recursive(self, starting_vertex_id, visited=None):
-        # Step 1: Check to see if a set() to store visited nodes exists.
+        # Step 1: Check to see if a set() to store visited vertices exists.
         #         If not, create one.
         if visited is None:
             visited = set()
@@ -79,19 +79,80 @@ class Graph:
                 self.dft_recursive(neighbor, visited)
                 
     def bfs(self, starting_vertex_id, destination_vertex_id):
-        """
-        Return a list containing the shortest path from
-        starting_vertex_id to destination_vertex_id in
-        breath-first order.
-        """
-        pass  # TODO
+        # Step 1: Create an empty QUEUE and enqueue the starting_vertex_id,
+        #         WITHIN an array, to the end of the queue (b/c we're 
+        #         storing PATHS this time, not "vertices")
+        q = Queue()
+        q.enqueue( [starting_vertex_id] )
+        # Step 2: Create a Set() to store visited vertices
+        #         NOTE: Sets are a good data structure b/c: they're 
+        #               unordered and don't have duplicated items
+        visited = set()
+        # Step 3: Use a WHILE loop that continues while queue is NOT empty
+        while q.size() > 0:
+            # Step 4a: Dequeue the FIRST PATH [to evaluate each of it's 
+            #         vertices] and set it equal to a variable
+            path = q.dequeue()
+            # Step 4b: Grab the VERTEX from the end of the path [to evaluate]
+            current_vert = path[-1]
+            # Step 4c: If current_vert == destination_vertex_id, return path
+            if current_vert == destination_vertex_id:
+                return path
+            if current_vert not in visited:
+            # Step 5: If the current_vert has NOT been visited, add it into the 
+            #         set() as an item
+                visited.add(current_vert)
+                # Step 6: Use a FOR loop that iterates over EACH of 
+                #         current_vert's neighbors, creating a NEW 
+                #         copy of the path for EACH neighbor, but each
+                #         neighbor now becomes the NEW 'current_vert'
+                #         for their OWN path, which is added to the
+                #         end of the queue, to be evaluated later
+                for neighbor in self.vertices[current_vert]:
+                    # Step 7: Copy the path
+                    path_copy = list(path)
+                    # Step 8: Append the neighbor to the end of the copied path
+                    path_copy.append(neighbor)
+                    # Step 9: Enqueue the copied path
+                    q.enqueue(path_copy)
+
     def dfs(self, starting_vertex_id, destination_vertex_id):
-        """
-        Return a list containing a path from
-        starting_vertex_id to destination_vertex_id in
-        depth-first order.
-        """
-        pass  # TODO
+        # Step 1: Create an empty STACK and push the starting_vertex_id,
+        #         WITHIN an array, to the end of the stack (b/c we're 
+        #         storing PATHS this time, not "vertices")
+        s = Stack()
+        s.push( [starting_vertex_id] )
+        # Step 2: Create a Set() to store visited vertices
+        #         NOTE: Sets are a good data structure b/c: they're 
+        #               unordered and don't have duplicated items
+        visited = set()
+        # Step 3: Use a WHILE loop that continues while the stack is NOT empty
+        while s.size() > 0:
+            # Step 4a: Pop the FIRST PATH [to evaluate each of it's 
+            #         vertices] and set it equal to a variable
+            path = s.pop()
+            # Step 4b: Grab the VERTEX from the end of the path [to evaluate]
+            current_vert = path[-1]
+            # Step 4c: If current_vert == destination_vertex_id, return path
+            if current_vert == destination_vertex_id:
+                return path
+            if current_vert not in visited:
+            # Step 5: If the current_vert has NOT been visited, add it into the 
+            #         set() as an item
+                visited.add(current_vert)
+                # Step 6: Use a FOR loop that iterates over EACH of 
+                #         current_vert's neighbors, creating a NEW 
+                #         copy of the path for EACH neighbor, but each
+                #         neighbor NOW becomes the NEW 'current_vert'
+                #         for their OWN path, which is added to the
+                #         end of the queue, to be evaluated later
+                for neighbor in self.vertices[current_vert]:
+                    # Step 7: Copy the path
+                    path_copy = list(path)
+                    # Step 8: Append the neighbor to the end of the copied path
+                    path_copy.append(neighbor)
+                    # Step 9: Push the copied path
+                    s.push(path_copy)
 
 
 
@@ -167,7 +228,7 @@ if __name__ == '__main__':
         [1, 2, 4, 6]
     '''
     print("\n\n---------------------------------------------------------------\n")
-    print("BFS path:")
+    print("BFS path with shortest # nodes:")
     print(graph.bfs(1, 6))
 
     '''
@@ -176,5 +237,5 @@ if __name__ == '__main__':
         [1, 2, 4, 7, 6]
     '''
     print("\n\n---------------------------------------------------------------\n")
-    print("BFS path:")
+    print("DFS path in depth first order:")
     print(graph.dfs(1, 6))
