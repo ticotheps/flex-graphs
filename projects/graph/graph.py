@@ -32,7 +32,7 @@ class Graph:
             if current_vert not in visited:
                 # Step 5: If it has NOT been visited, add it into the set 
                 #         as an item
-                print()
+                print(current_vert)
                 visited.add(current_vert)
                 # Step 6: Use a FOR loop that iterates over each of current_vert's
                 #         neighbors, adding each one to end of the queue
@@ -55,7 +55,7 @@ class Graph:
             if current_vert not in visited:
                 # Step 5: If it has NOT been visited, add it into the set 
                 #         as an item
-                print()
+                print(current_vert)
                 visited.add(current_vert)
                 # Step 6: Use a FOR loop that iterates over each of current_vert's
                 #         neighbors, adding each one to end of the queue
@@ -112,8 +112,8 @@ if __name__ == '__main__':
     Should print:
         {1: {2}, 2: {3, 4}, 3: {5}, 4: {6, 7}, 5: {3}, 6: {3}, 7: {1, 6}}
     '''
+    print("Vertices in Graph:\n")
     print(graph.vertices)
-
     '''
     Valid DFT paths:
         1, 2, 3, 5, 4, 6, 7
@@ -121,8 +121,9 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
+    print("\n\n---------------------------------------------------------------\n")
+    print("DFT path:")
     graph.dft(1)
-
     '''
     Valid BFT paths:
         1, 2, 3, 4, 5, 6, 7
@@ -138,8 +139,9 @@ if __name__ == '__main__':
         1, 2, 4, 3, 7, 6, 5
         1, 2, 4, 3, 7, 5, 6
     '''
+    print("\n\n---------------------------------------------------------------\n")
+    print("BFT path:")
     graph.bft(1)
-
     '''
     Valid DFT recursive paths:
         1, 2, 3, 5, 4, 6, 7
@@ -147,12 +149,15 @@ if __name__ == '__main__':
         1, 2, 4, 7, 6, 3, 5
         1, 2, 4, 6, 3, 5, 7
     '''
+    print("\n\n---------------------------------------------------------------\n")
+    print("DFT-recursive path:")
     graph.dft_recursive(1)
-
     '''
     Valid BFS path:
         [1, 2, 4, 6]
     '''
+    print("\n\n---------------------------------------------------------------\n")
+    print("BFS path:")
     print(graph.bfs(1, 6))
 
     '''
@@ -160,4 +165,6 @@ if __name__ == '__main__':
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
+    print("\n\n---------------------------------------------------------------\n")
+    print("BFS path:")
     print(graph.dfs(1, 6))
