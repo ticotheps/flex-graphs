@@ -4,19 +4,18 @@ Simple graph implementation
 from util import Stack, Queue  # These may come in handy
 
 class Graph:
-    """Represent a graph as a dictionary of vertices mapping labels to edges."""
+    # Represent a graph as a dictionary of vertices mapping labels to edges
     def __init__(self):
         self.vertices = {}
+    # Add a vertex_id to the graph
     def add_vertex(self, vertex_id):
-        """
-        Add a vertex_id to the graph.
-        """
         self.vertices[vertex_id] = set()
-    def add_edge(self, v1, v2):
-        """
-        Add a directed edge to the graph.
-        """
-        pass  # TODO
+    # Add a directed edge to the graph.
+    def add_edge(self, vertex_1_id, vertex_2_id):
+        if vertex_1_id in self.vertices and vertex_2_id in self.vertices:
+            self.vertices[vertex_1_id].add(vertex_2_id)
+        else:
+            raise IndexError("That vertex does not exist")
     def bft(self, starting_vertex_id):
         """
         Print each vertex_id in breadth-first order
