@@ -16,6 +16,7 @@ class Graph:
             self.vertices[vertex_1_id].add(vertex_2_id)
         else:
             raise IndexError("That vertex does not exist")
+          
     def bft(self, starting_vertex_id):
         # Step 1: Create an empty QUEUE and enqueue the starting_vertex_id
         q = Queue()
@@ -30,8 +31,8 @@ class Graph:
             #         to a variable
             current_vert = q.dequeue()
             if current_vert not in visited:
-                # Step 5: If it has NOT been visited, add it into the set 
-                #         as an item
+                # Step 5: If it has NOT been visited, print it and add it 
+                #         into the set as an item
                 print(current_vert)
                 visited.add(current_vert)
                 # Step 6: Use a FOR loop that iterates over each of current_vert's
@@ -53,21 +54,30 @@ class Graph:
             #         to a variable
             current_vert = s.pop()
             if current_vert not in visited:
-                # Step 5: If it has NOT been visited, add it into the set 
-                #         as an item
+                # Step 5: If it has NOT been visited, print it and add it 
+                #         into the set as an item
                 print(current_vert)
                 visited.add(current_vert)
                 # Step 6: Use a FOR loop that iterates over each of current_vert's
                 #         neighbors, adding each one to end of the queue
                 for next_vert in self.vertices[current_vert]:
                     s.push(next_vert)
-    def dft_recursive(self, starting_vertex_id):
-        """
-        Print each vertex_id in depth-first order
-        beginning from starting_vertex_id.
-        This should be done using recursion.
-        """
-        pass  # TODO
+                    
+    def dft_recursive(self, starting_vertex_id, visited=None):
+        # Step 1: Check to see if a set() to store visited nodes exists.
+        #         If not, create one.
+        if visited is None:
+            visited = set()
+        # Step 2: Check to see if starting_vertex_id is in the set(). 
+        if starting_vertex_id not in visited:
+            # Step 3: If not, print it and add it to the set().
+            print(starting_vertex_id)
+            visited.add(starting_vertex_id)
+            # Step 4: Use a FOR loop that iterates over each of starting_vertex_id's
+            #         neighbors, calling the dft_recursive() method on each one
+            for neighbor in self.vertices[starting_vertex_id]:
+                self.dft_recursive(neighbor, visited)
+                
     def bfs(self, starting_vertex_id, destination_vertex_id):
         """
         Return a list containing the shortest path from
