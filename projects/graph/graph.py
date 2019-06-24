@@ -18,16 +18,26 @@ class Graph:
             raise IndexError("That vertex does not exist")
     def bft(self, starting_vertex_id):
         # Step 1: Create an empty QUEUE and enqueue the starting_vertex_id
+        q = Queue()
+        q.enqueue(starting_vertex_id)
         # Step 2: Create a Set() to store visited vertices
         #         NOTE: Sets are a good data structure b/c: they're 
         #               unordered and no duplicated items
-        # Step 3: Use a WHILE loop that continues while the queue is NOT 
-        #         empty
-            # Step 4: Dequeue the FIRST vertex (to evaluate)
-                # Step 5: If it has been visited by adding it as an item 
-                #         into the Set()
-                # Step 6: Use a FOR loop that iterates over each vertex's
+        visited = set()
+        # Step 3: Use a WHILE loop that continues while queue is NOT empty
+        while q.size() > 0:
+            # Step 4: Dequeue the FIRST vertex [to evaluate] and set equal
+            #         to a variable
+            current_vert = q.dequeue()
+            if current_vert not in visited:
+                # Step 5: If it has NOT been visited, add it into the set 
+                #         as an item
+                print()
+                visited.add(current_vert)
+                # Step 6: Use a FOR loop that iterates over each of current_vert's
                 #         neighbors, adding each one to end of the queue
+                for next_vert in self.vertices[current_vert]:
+                    q.enqueue(next_vert)
         
     def dft(self, starting_vertex_id):
         """
