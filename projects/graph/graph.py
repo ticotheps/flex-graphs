@@ -7,46 +7,46 @@ class Graph:
     """Represent a graph as a dictionary of vertices mapping labels to edges."""
     def __init__(self):
         self.vertices = {}
-    def add_vertex(self, vertex):
+    def add_vertex(self, vertex_id):
         """
-        Add a vertex to the graph.
+        Add a vertex_id to the graph.
         """
-        pass  # TODO
+        self.vertices[vertex_id] = set()
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
         pass  # TODO
-    def bft(self, starting_vertex):
+    def bft(self, starting_vertex_id):
         """
-        Print each vertex in breadth-first order
-        beginning from starting_vertex.
-        """
-        pass  # TODO
-    def dft(self, starting_vertex):
-        """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
+        Print each vertex_id in breadth-first order
+        beginning from starting_vertex_id.
         """
         pass  # TODO
-    def dft_recursive(self, starting_vertex):
+    def dft(self, starting_vertex_id):
         """
-        Print each vertex in depth-first order
-        beginning from starting_vertex.
+        Print each vertex_id in depth-first order
+        beginning from starting_vertex_id.
+        """
+        pass  # TODO
+    def dft_recursive(self, starting_vertex_id):
+        """
+        Print each vertex_id in depth-first order
+        beginning from starting_vertex_id.
         This should be done using recursion.
         """
         pass  # TODO
-    def bfs(self, starting_vertex, destination_vertex):
+    def bfs(self, starting_vertex_id, destination_vertex_id):
         """
         Return a list containing the shortest path from
-        starting_vertex to destination_vertex in
+        starting_vertex_id to destination_vertex_id in
         breath-first order.
         """
         pass  # TODO
-    def dfs(self, starting_vertex, destination_vertex):
+    def dfs(self, starting_vertex_id, destination_vertex_id):
         """
         Return a list containing a path from
-        starting_vertex to destination_vertex in
+        starting_vertex_id to destination_vertex_id in
         depth-first order.
         """
         pass  # TODO
