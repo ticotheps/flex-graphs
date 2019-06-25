@@ -148,7 +148,7 @@ class Graph:
                 #         end of the queue, to be evaluated later
                 for neighbor in self.vertices[current_vert]:
                     # Step 7: Copy the path
-                    path_copy = list(path)
+                    path_copy = list(path) # Creates a copy of the list
                     # Step 8: Append the neighbor to the end of the copied path
                     path_copy.append(neighbor)
                     # Step 9: Push the copied path
