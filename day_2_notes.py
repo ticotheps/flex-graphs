@@ -25,12 +25,12 @@
 # None 
 
 f = open('words.txt', 'r')
-words = f.read().split('\n')
+words = f.read().split("\n")
 f.close()
 
 word_set = set()
 for word in words:
-    word_set.add(word.lower())
+	  word_set.add(word.lower())
 
 class Queue():
     def __init__(self):
@@ -63,7 +63,7 @@ def findLadders(begin_word, end_word):
     visited = set()
     q = Queue()
     q.enqueue([begin_word])
-    while q.size > 0:
+    while q.size() > 0:
       path = q.dequeue()
       current_word = path[-1]
       if current_word not in visited:
@@ -73,5 +73,7 @@ def findLadders(begin_word, end_word):
       for neighbor in get_neighbors(current_word):
           path_copy = list(path)
           path_copy.append(neighbor)
+          q.enqueue(path_copy)
           
-print(findLadders("hit", "cog"))
+# print(findLadders("sail", "boat"))
+print(findLadders("hit","cog"))
