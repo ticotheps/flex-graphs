@@ -10,6 +10,12 @@ islands = [[0, 1, 0, 1, 0],
            [1, 0, 1, 0, 0],
            [1, 1, 0, 0, 0]]
 
+# islands_starting = [[False, False, False, False, False],
+#                     [False, False, False, False, False],
+#                     [False, False, False, False, False],
+#                     [False, False, False, False, False],
+#                     [False, False, False, False, False]]
+
 class Stack():
     def __init__(self):
         self.stack = []
