@@ -1,15 +1,51 @@
 """
-Simple graph implementation
+Tico's SEAL team analogy for Graphs, BFT, DFT, BFS, & DFS! 
 """
-# Tico's SEAL team analogy for Graphs, BFT, DFT, BFS, & DFS! 
-from util import Stack, Queue  # These may come in handy
+
+# Scenario: You are a Navy SEAL lieutenant (LT). You and your team have  
+#   been deployed to a foreign country, where it is your mission to 
+#   recover a U.S. Ambassador that has been kidnapped by terrorists! 
+#   U.S. intelligence has pin-pointed the abandoned warehouse where the  
+#   Ambassador is currently being held hostage. 
+
+class Queue():
+    def __init__(self):
+        self.queue = []
+    def enqueue(self, value):
+        self.queue.append(value)
+    def dequeue(self):
+        if self.size() > 0:
+            return self.queue.pop(0)
+        else:
+            return None
+    def size(self):
+        return len(self.queue)
+
+class Stack():
+    def __init__(self):
+        self.stack = []
+    def push(self, value):
+        self.stack.append(value)
+    def pop(self):
+        if self.size() > 0:
+            return self.stack.pop()
+        else:
+            return None
+    def size(self):
+        return len(self.stack)
 
 class Graph:
-    # Think of a graph as a map of an "abandoned warehouse" that the SEALS
-    #   team is using to search for this bad guy.
+    # Think of the graph as a partially-completed map of an "abandoned 
+    #   warehouse" that the SEALS team must use and continually update
+    #   as they search for this bad guy.
+    # Due to limited intel, think of ANY vertex of the graph as a "room"
+    #   inside of this "warehouse" that may OR may NOT be on our 
+    #   partially-completed map.
     def __init__(self):
-        # Think of ANY vertex of the graph as a "room" inside of this
-        #   "warehouse" that may OR may NOT be on our map.
+        # This is a set(), which is just an unordered & unindexed 
+        #   collection in Python.
+        # Think of this set() as the physical piece of paper that our map
+        #   will be drawn on by our SEALS as they keep track of which.
         self.vertices = {}
     # Any room that does NOT have AT LEAST one edge is considered
     #   a "SECRET room".
