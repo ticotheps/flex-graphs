@@ -1,22 +1,30 @@
 """
 Simple graph implementation
 """
+# Tico's SEAL team analogy for Graphs, BFT, DFT, BFS, & DFS! 
 from util import Stack, Queue  # These may come in handy
 
 class Graph:
-    # Think of the graph as a "building"
+    # Think of a graph as a map of an "abandoned warehouse" that the SEALS
+    #   team is using to search for this bad guy.
     def __init__(self):
+        # Think of ANY vertex of the graph as a "room" inside of this
+        #   "warehouse" that may OR may NOT be on our map.
         self.vertices = {}
-    # Add a vertex_id to the graph
+    # Any room that does NOT have AT LEAST one edge is considered
+    #   a "SECRET room".
     def add_vertex(self, vertex_id):
+        # Uncovers another pre-existing "SECRET room" in the "warehouse".
         self.vertices[vertex_id] = set()
-    # Add a directed edge to the graph.
     def add_edge(self, vertex_1_id, vertex_2_id):
+        # Uncovers another pre-existing "SECRET room" in the "warehouse".
         if vertex_1_id in self.vertices and vertex_2_id in self.vertices:
             self.vertices[vertex_1_id].add(vertex_2_id)
         else:
             raise IndexError("That vertex does not exist")
           
+    # You are a Navy Seal and your mission is traverse through each room
+    #   (AKA "search each room") in the building for a bad guy.
     def bft(self, starting_vertex_id):
         # Step 1: Create an empty QUEUE and enqueue the starting_vertex_id
         q = Queue()
