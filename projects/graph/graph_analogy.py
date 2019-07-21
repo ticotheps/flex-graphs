@@ -4,7 +4,7 @@ Simple graph implementation
 from util import Stack, Queue  # These may come in handy
 
 class Graph:
-    # Represent a graph as a dictionary of vertices mapping labels to edges
+    # Think of the graph as a "building"
     def __init__(self):
         self.vertices = {}
     # Add a vertex_id to the graph
