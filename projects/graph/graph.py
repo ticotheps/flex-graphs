@@ -13,9 +13,9 @@ class Graph:
     # Add a directed edge to the graph.
     def add_edge(self, vertex_1_id, vertex_2_id):
         if vertex_1_id not in self.vertices:
-            self.vertices.add_vertex(vertex_1_id)
+            self.vertices[vertex_1_id] = set()
         if vertex_2_id not in self.vertices:
-            self.vertices.add_vertex(vertex_2_id)
+            self.vertices[vertex_2_id] = set()
         self.vertices[vertex_1_id].add(vertex_2_id)
         # if vertex_1_id in self.vertices and vertex_2_id in self.vertices:
         #     self.vertices[vertex_1_id].add(vertex_2_id)
